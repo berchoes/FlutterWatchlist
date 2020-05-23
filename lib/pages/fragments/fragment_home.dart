@@ -99,7 +99,12 @@ class _FragmentHomeState extends State<FragmentHome> {
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             print(snapshot.error);
-            return Center(child: Text("No Movies Found :("));
+            return Center(
+              child: Text(
+                "Nothing Found :(",
+                style: TextStyle(color: Style.Colors.titleColor),
+              ),
+            );
           } else if (snapshot.hasData) {
             return gridViewMovies(snapshot);
           }
@@ -110,19 +115,21 @@ class _FragmentHomeState extends State<FragmentHome> {
   }
 
   Widget searchedMovies(String search) {
-    return FutureBuilder<List<MovieModel>>(
-      future: Service.getMovies(search),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          print(snapshot.error);
-          return Center(
-              child: Text("Cannot Found :(",
-                  style: TextStyle(color: Colors.grey[400])));
-        } else if (snapshot.hasData) {
-          return gridViewMovies(snapshot);
-        }
-        return circularProgress();
-      },
+    return Flexible(
+      child: FutureBuilder<List<MovieModel>>(
+        future: Service.getMovies(search),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            print(snapshot.error);
+            return Center(
+                child: Text("Nothing Found :(",
+                    style: TextStyle(color: Style.Colors.titleColor)));
+          } else if (snapshot.hasData) {
+            return gridViewMovies(snapshot);
+          }
+          return circularProgress();
+        },
+      ),
     );
   }
 

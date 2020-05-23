@@ -93,7 +93,7 @@ class _FragmentGamesState extends State<FragmentGames> {
           return Center(
               child: Text(
             "No Games Found :(",
-            style: TextStyle(color: Colors.grey[400]),
+            style: TextStyle(color: Style.Colors.titleColor),
           ));
         } else if (snapshot.hasData) {
           return gridViewGames(snapshot);
@@ -113,7 +113,7 @@ class _FragmentGamesState extends State<FragmentGames> {
           return Center(
               child: Text(
             "No Games Found :(",
-            style: TextStyle(color: Colors.grey[400]),
+            style: TextStyle(color: Style.Colors.titleColor),
           ));
         } else if (snapshot.hasData) {
           return gridViewGames(snapshot);
@@ -135,7 +135,7 @@ class _FragmentGamesState extends State<FragmentGames> {
 
   Widget gridViewGames(AsyncSnapshot<List<MovieModel>> snapshot) {
     return Padding(
-        padding: EdgeInsets.all(2.0),
+        padding: EdgeInsets.all(5.0),
         child: GridView.count(
           crossAxisCount: 3,
           childAspectRatio: 0.60,

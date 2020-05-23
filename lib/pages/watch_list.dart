@@ -19,10 +19,6 @@ abstract class WatchList {
     watchList.remove(item);
   }
 
-  static getList() {
-    return watchList;
-  }
-
   static saveList() async {
     prefs = await SharedPreferences.getInstance();
     String jsonList = jsonEncode(watchList);

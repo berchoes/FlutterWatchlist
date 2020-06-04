@@ -4,7 +4,7 @@ import 'package:Wrinkled/services/movie_model.dart';
 import 'package:Wrinkled/services/response_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class WatchList {
+class WatchList {
   static List<MovieModel> watchList = [];
   static SharedPreferences prefs;
 

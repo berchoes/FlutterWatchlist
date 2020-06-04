@@ -145,8 +145,7 @@ class _FragmentGamesState extends State<FragmentGames> {
               snapshot.data.where((element) => element.type == "game").map(
             (movie) {
               return GestureDetector(
-                child: SafeArea(
-                    child: Center(child: GridTile(child: MovieCell(movie)))),
+                child: SafeArea(child: GridTile(child: MovieCell(movie))),
                 onTap: () {
                   goToDetailsPage(context, movie);
                 },

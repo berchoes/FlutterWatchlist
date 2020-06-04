@@ -1,6 +1,5 @@
 import 'package:Wrinkled/pages/details.dart';
 import 'package:Wrinkled/pages/movie_cell.dart';
-import 'package:Wrinkled/pages/watch_list.dart';
 import 'package:Wrinkled/services/movie_model.dart';
 import 'package:Wrinkled/services/service.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +22,6 @@ class _FragmentHomeState extends State<FragmentHome> {
         valueColor: AlwaysStoppedAnimation(Style.Colors.secondColor),
       ),
     );
-  }
-
-  @override
-  void initState() {
-    WatchList.loadList();
-    super.initState();
   }
 
   @override
@@ -157,8 +150,7 @@ class _FragmentHomeState extends State<FragmentHome> {
               .map(
             (movie) {
               return GestureDetector(
-                child: SafeArea(
-                    child: Center(child: GridTile(child: MovieCell(movie)))),
+                child: SafeArea(child: GridTile(child: MovieCell(movie))),
                 onTap: () {
                   goToDetailsPage(context, movie);
                 },

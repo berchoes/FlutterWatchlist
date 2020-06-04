@@ -1,3 +1,4 @@
+import 'package:Wrinkled/pages/watch_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Wrinkled/pages/fragments/fragment_home.dart';
@@ -29,6 +30,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void initState() {
+    WatchList.loadList();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -39,8 +46,9 @@ class _HomePageState extends State<HomePage> {
           elevation: 40,
           currentIndex: _currentIndex,
           onTap: (value) {
-            _currentIndex = value;
-            setState(() {});
+            setState(() {
+              _currentIndex = value;
+            });
           },
           backgroundColor: Style.Colors.mainColor,
           items: [

@@ -9,7 +9,7 @@ class FragmentList extends StatefulWidget {
   _FragmentListState createState() => _FragmentListState();
 }
 
-class _FragmentListState extends State<FragmentList> implements WatchList {
+class _FragmentListState extends State<FragmentList> {
   @override
   void initState() {
     super.initState();
@@ -122,6 +122,7 @@ class _FragmentListState extends State<FragmentList> implements WatchList {
         onPressed: () {
           setState(() {
             WatchList.watchList.insert(index, item);
+            WatchList.saveList();
           });
         },
       ),

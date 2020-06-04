@@ -1,5 +1,5 @@
 # ScreenShots
 
-<img src= /screenshots/home.png> <img src= /screenshots/games.png>
-<img src= /screenshots/diablo.png> <img src= /screenshots/detail.png>
-<img src= /screenshots/list.png> <img src= /screenshots/undo.png>
+<img src= /screenshots/home.png height= "600" width = "380"> <img src= /screenshots/games.png height= "600" width = "380">
+<img src= /screenshots/diablo.png height= "600" width = "380"> <img src= /screenshots/detail.png height= "600" width = "380">
+<img src= /screenshots/list.png height= "600" width = "380"> <img src= /screenshots/undo.png height= "600" width = "380">

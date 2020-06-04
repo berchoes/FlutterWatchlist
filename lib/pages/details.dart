@@ -106,7 +106,10 @@ class _MovieDetailsState extends State<MovieDetails> {
 
   Widget buttonChoice(MovieModel item) {
     if (WatchList.watchList
-        .where((element) => element.title == item.title)
+        .where((element) =>
+            element.title == item.title &&
+            element.poster == item.poster &&
+            element.year == item.year)
         .isEmpty) {
       return Flexible(
         child: RaisedButton(
@@ -135,8 +138,10 @@ class _MovieDetailsState extends State<MovieDetails> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           onPressed: () {
-            WatchList.watchList
-                .removeWhere((element) => element.title == item.title);
+            WatchList.watchList.removeWhere((element) =>
+                element.title == item.title &&
+                element.poster == item.poster &&
+                element.year == item.year);
             setState(() {});
             WatchList.saveList();
           },

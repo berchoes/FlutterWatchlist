@@ -14,7 +14,7 @@ class _FragmentGamesState extends State<FragmentGames> {
   final _searchController = TextEditingController();
   Icon _customIcon = Icon(Icons.search);
   Widget _customSearchBar = Text("Games");
-  String searchText = "Assassin's Creed";
+  String searchText = "Lord of the rings";
 
   circularProgress() {
     return Center(

@@ -52,8 +52,10 @@ class _FragmentListState extends State<FragmentList> {
         background: _deleteBg(),
         onDismissed: (direction) {
           setState(() {
-            WatchList.watchList
-                .removeWhere((element) => element.title == item.title);
+            WatchList.watchList.removeWhere((element) =>
+                element.title == item.title &&
+                element.poster == item.poster &&
+                element.year == item.year);
             WatchList.saveList();
           });
           _showSnackBar(context, item, index);

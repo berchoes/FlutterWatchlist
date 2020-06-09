@@ -92,7 +92,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: Text('Go Back',
+                        child: Text('Back',
                             style: GoogleFonts.overpass(
                                 fontSize: 15,
                                 color: Colors.white,

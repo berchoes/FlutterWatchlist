@@ -4,6 +4,7 @@ import 'package:Wrinkled/services/movie_model.dart';
 import 'package:Wrinkled/services/service.dart';
 import 'package:flutter/material.dart';
 import 'package:Wrinkled/style/theme.dart' as Style;
+import 'package:google_fonts/google_fonts.dart';
 
 class FragmentHome extends StatefulWidget {
   @override
@@ -13,8 +14,12 @@ class FragmentHome extends StatefulWidget {
 class _FragmentHomeState extends State<FragmentHome> {
   final _searchController = TextEditingController();
   Icon _customIcon = Icon(Icons.search);
-  Widget _customSearchBar = Text("Movies/Series");
-  String searchText = "Harry Potter";
+  Widget _customSearchBar = Text(
+    "Movies/Series",
+    style: GoogleFonts.overpass(),
+  );
+  String _searchText = "harry potter";
+  Key _textKey = GlobalKey();
 
   circularProgress() {
     return Center(
@@ -42,8 +47,9 @@ class _FragmentHomeState extends State<FragmentHome> {
                           primaryColor: Colors.white,
                           cursorColor: Colors.white),
                       child: TextField(
+                        key: _textKey,
                         autofocus: true,
-                        style: TextStyle(
+                        style: GoogleFonts.overpass(
                           color: Colors.white,
                         ),
                         controller: _searchController,
@@ -88,7 +94,7 @@ class _FragmentHomeState extends State<FragmentHome> {
   Widget defaultMovies() {
     return Flexible(
       child: FutureBuilder<List<MovieModel>>(
-        future: Service.getMovies(searchText),
+        future: Service.getMovies(_searchText),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             print(snapshot.error);
@@ -150,7 +156,8 @@ class _FragmentHomeState extends State<FragmentHome> {
               .map(
             (movie) {
               return GestureDetector(
-                child: SafeArea(child: GridTile(child: MovieCell(movie))),
+                child: SafeArea(
+                    child: GridTile(child: Center(child: MovieCell(movie)))),
                 onTap: () {
                   goToDetailsPage(context, movie);
                 },

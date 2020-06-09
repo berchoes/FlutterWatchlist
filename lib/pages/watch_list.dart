@@ -23,7 +23,6 @@ class WatchList {
     prefs = await SharedPreferences.getInstance();
     String jsonList = jsonEncode(watchList);
     await prefs.setString("WatchList", jsonList);
-    print(prefs.getString("WatchList"));
   }
 
   static loadList() async {

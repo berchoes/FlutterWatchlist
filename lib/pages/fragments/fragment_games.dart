@@ -3,6 +3,7 @@ import 'package:Wrinkled/services/movie_model.dart';
 import 'package:Wrinkled/services/service.dart';
 import 'package:flutter/material.dart';
 import 'package:Wrinkled/style/theme.dart' as Style;
+import 'package:google_fonts/google_fonts.dart';
 import '../movie_cell.dart';
 
 class FragmentGames extends StatefulWidget {
@@ -13,7 +14,10 @@ class FragmentGames extends StatefulWidget {
 class _FragmentGamesState extends State<FragmentGames> {
   final _searchController = TextEditingController();
   Icon _customIcon = Icon(Icons.search);
-  Widget _customSearchBar = Text("Games");
+  Widget _customSearchBar = Text(
+    "Games",
+    style: GoogleFonts.overpass(),
+  );
   String searchText = "Lord of the rings";
 
   circularProgress() {
@@ -43,7 +47,7 @@ class _FragmentGamesState extends State<FragmentGames> {
                           cursorColor: Colors.white),
                       child: TextField(
                         autofocus: true,
-                        style: TextStyle(color: Colors.white),
+                        style: GoogleFonts.overpass(color: Colors.white),
                         controller: _searchController,
                         onChanged: (text) {
                           setState(() {});
@@ -145,7 +149,8 @@ class _FragmentGamesState extends State<FragmentGames> {
               snapshot.data.where((element) => element.type == "game").map(
             (movie) {
               return GestureDetector(
-                child: SafeArea(child: GridTile(child: MovieCell(movie))),
+                child: SafeArea(
+                    child: GridTile(child: Center(child: MovieCell(movie)))),
                 onTap: () {
                   goToDetailsPage(context, movie);
                 },

@@ -3,6 +3,7 @@ import 'package:Wrinkled/pages/watch_list.dart';
 import 'package:Wrinkled/services/movie_model.dart';
 
 import 'package:Wrinkled/style/theme.dart' as Style;
+import 'package:google_fonts/google_fonts.dart';
 
 class FragmentList extends StatefulWidget {
   @override
@@ -19,7 +20,10 @@ class _FragmentListState extends State<FragmentList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Watch List"),
+        title: Text(
+          "List",
+          style: GoogleFonts.overpass(),
+        ),
         centerTitle: true,
         backgroundColor: Style.Colors.mainColor,
       ),
@@ -39,7 +43,7 @@ class _FragmentListState extends State<FragmentList> {
     return Container(
       alignment: Alignment.centerRight,
       padding: EdgeInsets.only(right: 20.0),
-      color: Colors.red,
+      color: Colors.red[900],
       child: const Icon(
         Icons.delete,
         color: Colors.white,
@@ -52,6 +56,7 @@ class _FragmentListState extends State<FragmentList> {
         background: _deleteBg(),
         onDismissed: (direction) {
           setState(() {
+            Scaffold.of(context).removeCurrentSnackBar();
             WatchList.watchList.removeWhere((element) =>
                 element.title == item.title &&
                 element.poster == item.poster &&
@@ -72,7 +77,7 @@ class _FragmentListState extends State<FragmentList> {
             ),
             title: Text(
               item.title,
-              style: TextStyle(
+              style: GoogleFonts.overpass(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 18),
@@ -91,23 +96,31 @@ class _FragmentListState extends State<FragmentList> {
                           color: Colors.white,
                           fontStyle: FontStyle.italic)),
                   Text(item.type[0].toUpperCase() + item.type.substring(1),
-                      style: TextStyle(fontSize: 15, color: Colors.white))
+                      style: GoogleFonts.overpass(
+                          fontSize: 15, color: Style.Colors.secondColor))
                 ],
               ),
               SizedBox(
                 height: 2,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  SizedBox(width: 0),
-                  Text("Year:  ",
-                      style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
-                          fontStyle: FontStyle.italic)),
-                  Text(item.year,
-                      style: TextStyle(fontSize: 15, color: Colors.white))
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      SizedBox(width: 0),
+                      Text("Year:  ",
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.white,
+                              fontStyle: FontStyle.italic)),
+                      Text(item.year,
+                          style: GoogleFonts.overpass(
+                              fontSize: 15, color: Style.Colors.secondColor)),
+                    ],
+                  ),
+                  _iconDecider(item)
                 ],
               ),
             ]),
@@ -115,9 +128,30 @@ class _FragmentListState extends State<FragmentList> {
         ));
   }
 
+  Widget _iconDecider(MovieModel item) {
+    if (item.type == "movie")
+      return Icon(
+        Icons.movie,
+        color: Style.Colors.secondColor,
+        size: 20,
+      );
+    else if (item.type == "series")
+      return Icon(
+        Icons.theaters,
+        color: Style.Colors.secondColor,
+        size: 20,
+      );
+    else
+      return Icon(
+        Icons.gamepad,
+        color: Style.Colors.secondColor,
+        size: 20,
+      );
+  }
+
   void _showSnackBar(context, MovieModel item, index) {
     Scaffold.of(context).showSnackBar(SnackBar(
-      content: Text('${item.title} is deleted'),
+      content: Text('${item.title} is deleted', style: GoogleFonts.overpass()),
       action: SnackBarAction(
         label: "UNDO",
         textColor: Style.Colors.secondColor,
